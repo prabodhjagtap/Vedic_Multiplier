@@ -1,0 +1,1 @@
+For implementation of Vedic square multiplier both half and full adder modules are required.
