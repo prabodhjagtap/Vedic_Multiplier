@@ -1,0 +1,43 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date:    07:02:26 07/13/2024 
+// Design Name: 
+// Module Name:    MUL2_2 
+// Project Name: 
+// Target Devices: 
+// Tool versions: 
+// Description: 
+//
+// Dependencies: 
+//
+// Revision: 
+// Revision 0.01 - File Created
+// Additional Comments: 
+//
+//////////////////////////////////////////////////////////////////////////////////
+module MUL2_2( P, A, B );
+
+input [1:0] A;
+
+input [1:0] B;
+
+output [3:0] P;
+
+wire w1, w2, C, w3;
+
+and n1(P[0], A[0], B[0]);
+
+and n2(w1, A[0], B[1]);
+
+and n3(w2, A[1], B[0]);
+
+HA n4(P[1], C, w1, w2);
+
+and n5(w3, A[1], B[1]);
+
+HA n6(P[2], P[3], C, w3);
+
+endmodule
