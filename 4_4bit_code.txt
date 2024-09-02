@@ -1,59 +1,51 @@
+4-bit square code -->
+
+
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date:    09:16:29 07/13/2024 
-// Design Name: 
-// Module Name:    MUL4_4 
-// Project Name: 
-// Target Devices: 
-// Tool versions: 
-// Description: 
-//
-// Dependencies: 
-//
-// Revision: 
-// Revision 0.01 - File Created
-// Additional Comments: 
-//
-//////////////////////////////////////////////////////////////////////////////////
-module MUL4_4(A, B, P);
 
-input [0:3]A;
-input [0:3]B;
-output [0:7]P;
+module Square_bit4(A, B, P);
 
-wire w1, w2, w3, w4, w5,w6, w7, w8, w9, w10, w11, w12, w13, w14, w15, w16, w17, w18, w19,w20, w21;
-wire c1, c2, c3, c4, c5, c6, c7, c8, c9,c10, C11;
+input [3:0]A;
+input [3:0]B;
+output [7:0]P;
+
+wire w1, w2, w3, w4, w5, w6, w7, w8, w9, w10,w11, w12, w13, w14, w15, w16, w17, w18, w19, w20, w21;
+
+wire c1, c2, c3, c4, c5, c6, c7, c8, c9, c10,c11;
 
 and n1(P[0], A[0], B[0]);
+
 and n2(w1, A[0], B[1]);
 and n3(w2, A[1], B[0]);
 HA n4(P[1], c1, w1, w2);
+
 and n5(w3, A[0], B[2]);
 and n6(w4, A[1], B[1]);
-FA n7(w5, c2, w3, w4, c1);
+FA n7(w5, c2, w3,  w4, c1);
 and n8(w6, A[2], B[0]);
 HA n9(P[2], c3, w5, w6);
-and n10(w7, A[2], B[1]);
+
+and n10(w7, A[0], B[3]);
 and n11(w8, A[1], B[2]);
-FA n12(w9, c4, w7, w8, c2);
-and n13(w10, A[0], B[3]);
-FA n14(w11, c5, w9, w10, c3);
+FA n12(w9, c4, w7,  w8, c2);
+and n13(w10, A[2], B[1]);
+FA n14(w11, c5, w9,  w10, c3);
 and n15(w12, A[3], B[0]);
 HA n16(P[3], c6, w11, w12);
-and n17(w21, A[1], B[3]);
-HA n18(w13, c7, w21, c4);
-and n19(w14, A[2], B[2]);
-FA n20(w15, c8, w14, w13, c5);
-and n21(w16, A[3], B[1]);
-HA n22(P[4], c9, w16, w15);
-and n23(w17, A[3], B[2]);
-FA n24(w18, c10, w17, c7, c8);
-and n25(w19, A[2], B[3]);
-FA n26(P[5], c11, w18, w19, c9);
-and n27(w20, A[3], B[3]);
-FA n28(P[6], P[7], w20, c10, c11);
+
+and n17(w13, A[3], B[1]);
+HA n18(w14, c7, w13, c4);
+and n19(w15, A[2], B[2]);
+FA n20(w16, c8, w14, w15, c5);
+and n21(w17, A[1], B[3]);
+FA n22(P[4], c9, w16, w17, c6);
+
+and n23(w18, A[3], B[2]);
+FA n24(w19, c10, w18, c7, c8);
+and n25(w20, A[2], B[3]);
+FA n26(P[5], c11, w19,  w20, c9);
+
+and n27(w21, A[3], B[3]);
+FA n28(P[6], P[7], w21,  c10, c11);
 
 endmodule
